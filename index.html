@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ============================================================
+     Jonathan Silén — personal site, standalone version.
+     Published at https://jonathansilen.com
+     Swap media in /media (see media/README.md) and links/embeds
+     in the SITE_CONFIG object at the bottom of this file.
+     ============================================================ -->
+<title>Jonathan Silén — Actor, screenwriter, film producer</title>
+<meta name="description" content="Jonathan Silén — Swedish actor, screenwriter and film producer. Nominated for a Guldbagge for best male actor. One foot in resistance to AI, the other in building it.">
+<link rel="canonical" href="https://jonathansilen.com/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="media/favicon.svg" type="image/svg+xml"><!-- PLACEHOLDER favicon -->
+<link rel="apple-touch-icon" href="media/apple-touch-icon.png"><!-- PLACEHOLDER 180x180 -->
+
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Jonathan Silén">
+<meta property="og:title" content="Jonathan Silén — Actor, screenwriter, film producer">
+<meta property="og:description" content="Swedish actor, screenwriter and film producer. One foot in resistance to AI, the other in building it.">
+<meta property="og:url" content="https://jonathansilen.com/">
+<meta property="og:image" content="https://jonathansilen.com/media/og-image.jpg"><!-- PLACEHOLDER 1200x630 -->
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Jonathan Silén">
+<meta property="og:locale" content="en_GB">
+<meta property="profile:first_name" content="Jonathan">
+<meta property="profile:last_name" content="Silén">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jonathan Silén — Actor, screenwriter, film producer">
+<meta name="twitter:description" content="Swedish actor, screenwriter and film producer. One foot in resistance to AI, the other in building it.">
+<meta name="twitter:image" content="https://jonathansilen.com/media/og-image.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jonathan Silén",
+  "url": "https://jonathansilen.com/",
+  "image": "https://jonathansilen.com/media/portrait.jpg",
+  "nationality": { "@type": "Country", "name": "Sweden" },
+  "jobTitle": ["Actor", "Screenwriter", "Film producer"],
+  "description": "Swedish actor, screenwriter and film producer, nominated for a Guldbagge for best male actor. Active in the Swedish movement warning about the risks of AI, and co-developer of Tablå, an AI-native platform for theatres. In autumn 2027 at the Royal Dramatic Theatre in Stockholm.",
+  "worksFor": { "@type": "Organization", "name": "ÖGAT Film", "legalName": "Ögat AB", "url": "https://ogatfilm.se/" },
+  "knowsAbout": ["Acting", "Film production", "Screenwriting", "AI risk", "Theatre technology"]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0c; --ink:#ece8e1; --dim:#8d8880; --line:#2a2826;
+  --amber:#d9a441; --cyan:#7fb7c4;
+  --serif:"Instrument Serif","Iowan Old Style",Georgia,serif;
+  --sans:"Inter Tight",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --W:min(34vw,440px); --H:min(64vh,600px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-snap-type:y proximity;scroll-behavior:smooth;background:var(--bg)}
+body{color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:-50%;pointer-events:none;z-index:50;opacity:.06;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+a{color:inherit}
+img{display:block;max-width:100%}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--ink);color:var(--bg);padding:8px 12px;font-family:var(--mono);font-size:12px}
+.skip:focus{top:12px}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+
+/* header */
+.top{position:absolute;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:18px 8vw 0}
+.top .name{font-family:var(--serif);font-size:20px;color:var(--ink);text-decoration:none;letter-spacing:.01em}
+
+/* ---- stage + prism (decorative; real content is in <main>) ---- */
+.stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:flex-end;padding-right:9vw;pointer-events:none;perspective:1600px;z-index:1}
+.prism-wrap{width:var(--W);height:var(--H);position:relative;transform-style:preserve-3d}
+.prism{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.face{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);overflow:hidden;background:#111;display:flex;flex-direction:column;justify-content:space-between;padding:22px}
+.face:nth-child(1){transform:rotateY(0deg) translateZ(calc(var(--W)/2))}
+.face:nth-child(2){transform:rotateY(90deg) translateZ(calc(var(--W)/2))}
+.face:nth-child(3){transform:rotateY(180deg) translateZ(calc(var(--W)/2))}
+.face:nth-child(4){transform:rotateY(270deg) translateZ(calc(var(--W)/2))}
+.ph,.media-img{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.media-img{object-fit:cover;object-position:center 20%;filter:grayscale(.2) contrast(1.06) saturate(.92)}
+.shade{position:absolute;inset:0;z-index:0;background:linear-gradient(transparent 35%,rgba(0,0,0,.72))}
+.face > :not(.ph):not(.media-img):not(.shade):not(.tabla-anim){position:relative;z-index:1}
+.face .num{font-family:var(--serif);font-size:84px;line-height:1;color:rgba(236,232,225,.92)}
+.face .lbl{font-family:var(--serif);font-style:italic;font-size:30px}
+.tag{border:1px dashed rgba(236,232,225,.35);padding:6px 8px;align-self:flex-start;background:rgba(0,0,0,.4)}
+.has-img .tag{display:none}
+/* placeholder light (shown until a real image loads) */
+.f1 .ph{background:radial-gradient(60% 45% at 50% 30%,rgba(217,164,65,.55),transparent 70%),linear-gradient(#1a1410,#0c0a09)}
+.f2 .ph{background:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 2px,transparent 2px 4px),radial-gradient(70% 40% at 30% 70%,rgba(217,164,65,.30),transparent 70%),linear-gradient(#141210,#0a0a0a)}
+.f3 .ph{background:conic-gradient(from 200deg at 60% 40%,rgba(217,164,65,.25),rgba(127,183,196,.25),rgba(217,164,65,.25)),linear-gradient(#121212,#0a0a0a);filter:saturate(.7)}
+.f4 .ph{background:linear-gradient(rgba(127,183,196,.10) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,rgba(127,183,196,.10) 1px,transparent 1px) 0 0/28px 28px,radial-gradient(60% 50% at 50% 50%,rgba(127,183,196,.35),transparent 70%),#0b0f10}
+.f5 .ph{background:radial-gradient(55% 45% at 45% 35%,rgba(236,232,225,.16),transparent 70%),linear-gradient(#151413,#0b0b0c)}
+
+/* spine */
+.spine{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);width:min(420px,70vw);z-index:5;transition:opacity .5s;opacity:0}
+.spine .track{position:relative;height:1px;background:linear-gradient(90deg,var(--amber),var(--cyan));margin:8px 0}
+.spine .dot{position:absolute;top:-4px;width:9px;height:9px;border-radius:50%;background:var(--ink);transform:translateX(-50%);left:0}
+.spine .ends{display:flex;justify-content:space-between}
+
+/* nav dots */
+.dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:10;display:flex;flex-direction:column;align-items:flex-end;gap:14px;list-style:none}
+.dots a{display:flex;align-items:center;gap:10px;text-decoration:none;padding:2px 0}
+.dots .d{width:7px;height:7px;border-radius:50%;border:1px solid var(--dim);transition:.3s}
+.dots .t{opacity:0;transition:.3s}
+.dots a:hover .t,.dots a:focus-visible .t{opacity:1}
+.dots a[aria-current="true"] .d{background:var(--ink);border-color:var(--ink);transform:scale(1.3)}
+
+/* content */
+main{position:relative;z-index:2}
+section{min-height:100vh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;padding:12vh 8vw;max-width:52vw}
+.kicker{margin-bottom:22px}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(56px,9vw,148px);line-height:.92;letter-spacing:-.01em}
+h1 em{color:var(--amber)}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.4vw,84px);line-height:1;margin-bottom:22px}
+h2 em{font-style:italic}
+.lead{font-size:clamp(17px,1.45vw,21px);max-width:36ch;color:#d5d0c8}
+.lead + .lead{margin-top:14px}
+.intro .lead{max-width:38ch;margin-top:28px}
+.meta{margin-top:30px;display:flex;gap:18px;flex-wrap:wrap;align-items:center}
+.meta a,.meta button{font:inherit;color:inherit;letter-spacing:inherit;text-transform:inherit;background:none;border:0;cursor:pointer;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+.meta a:hover,.meta button:hover{border-color:var(--amber);color:var(--ink)}
+.meta .play::before{content:"▶ ";font-size:9px}
+.ph-inline{display:none}
+.hint{margin-top:48px}
+.hint span{display:inline-block;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
+.content-step{opacity:.28;transition:opacity .55s}
+.content-step.on{opacity:1}
+.no-js .content-step{opacity:1}
+.draft-only{display:none;margin-top:16px;padding-left:12px;border-left:1px dashed var(--dim);color:var(--dim);font-size:15px}
+.show-draft .draft-only{display:block}
+
+/* about */
+.about{max-width:none;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:6vw;align-items:center}
+.about .portrait{position:relative;aspect-ratio:4/5;border:1px solid var(--line);overflow:hidden;max-height:72vh}
+.about .portrait .tag{position:absolute;left:14px;bottom:14px;z-index:1}
+.about .lead{max-width:44ch}
+.split{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line);max-width:560px}
+.split div{padding:16px 16px 0 0}
+.split div + div{padding-left:16px;border-left:1px solid var(--line)}
+.split .mono{display:block;margin-bottom:6px}
+.split .r{color:var(--amber)} .split .b{color:var(--cyan)}
+.split p{font-size:15px;color:#cfc9c0}
+
+/* contact */
+.outro{max-width:none}
+.outro h2{font-size:clamp(36px,4.4vw,66px)}
+.contact-grid{margin-top:34px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);max-width:980px}
+.contact-grid > div{padding:18px 18px 18px 0;border-bottom:1px solid var(--line)}
+.contact-grid .mono{display:block;margin-bottom:8px}
+.contact-grid a{font-family:var(--serif);font-size:22px;text-decoration:none;border-bottom:1px solid transparent}
+.contact-grid a:hover{border-color:var(--amber)}
+.contact-grid small{display:block;color:var(--dim);font-size:13px;margin-top:4px}
+.placeholder{color:var(--amber)}
+footer{position:relative;z-index:2;padding:28px 8vw 40px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--line)}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
+footer nav{display:flex;gap:18px}
+
+/* video dialog */
+dialog.video{border:1px solid var(--line);background:#0e0e0f;color:var(--ink);padding:0;width:min(1100px,92vw);margin:auto}
+dialog.video::backdrop{background:rgba(0,0,0,.82)}
+dialog.video .bar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+dialog.video .bar button{all:unset;cursor:pointer;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--dim)}
+dialog.video .bar button:hover{color:var(--ink)}
+dialog.video .frame{aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+dialog.video iframe{width:100%;height:100%;border:0}
+
+
+/* Tablå animation (decorative, swappable — see README) */
+.tabla-anim{position:absolute;inset:0;z-index:0}
+.has-anim .shade{background:linear-gradient(transparent 55%,rgba(0,0,0,.55))}
+.face.has-anim .num,.face.has-anim .lbl{text-shadow:0 0 18px #0b0f10}
+
+/* mobile: no 3D, stacked cards */
+@media (max-width:820px){
+  html{scroll-snap-type:none}
+  .stage,.dots{display:none}
+  .top{padding:16px 22px 0}
+  .top .mono{display:none}
+  .contact-grid{grid-template-columns:1fr}
+  section{max-width:none;min-height:auto;padding:64px 22px}
+  .intro{min-height:88vh}
+  .ph-inline{display:block;height:58vw;max-height:360px;border:1px solid var(--line);margin:0 0 26px;position:relative;overflow:hidden}
+  .ph-inline .tag{position:absolute;left:12px;bottom:12px;z-index:1}
+  .ph-inline .num{position:absolute;right:14px;top:6px;font-family:var(--serif);font-size:54px;opacity:.9;z-index:1}
+  .content-step{opacity:1}
+  .spine{bottom:0;width:100%;left:0;transform:none;padding:12px 22px 14px;background:linear-gradient(transparent,rgba(11,11,12,.92) 35%)}
+  .face-sec,.about,.outro{border-top:1px solid var(--line)}
+  .about{display:flex;flex-direction:column-reverse;gap:28px;align-items:stretch}
+  .about .portrait{max-height:none}
+  footer{padding-bottom:80px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hint span{animation:none}
+  .content-step,.dots *,.spine{transition:none!important}
+}
+
+/* photo credit */
+.credit{margin-top:14px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);opacity:.85}
+.about .portrait .credit-overlay{position:absolute;left:14px;bottom:14px;z-index:2;padding:6px 8px;background:rgba(0,0,0,.45);border:1px solid rgba(236,232,225,.2);font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.has-img .credit-overlay{display:block}
+.portrait .tag.credit-overlay{display:none}
+.has-img .portrait .tag{display:none}
+
+/* Folk Nation feature card */
+.feature-card{display:flex;gap:14px;align-items:stretch;margin-top:28px;max-width:420px;text-decoration:none;border:1px solid var(--line);background:rgba(0,0,0,.35);transition:border-color .25s, background .25s}
+.feature-card:hover{border-color:var(--amber);background:rgba(0,0,0,.5)}
+.feature-card img{width:128px;height:80px;object-fit:cover;flex-shrink:0;filter:grayscale(.1) contrast(1.05)}
+.feature-card .fc-body{padding:10px 12px 10px 0;display:flex;flex-direction:column;justify-content:center;min-width:0}
+.feature-card .fc-body strong{font-family:var(--serif);font-weight:400;font-size:18px;color:var(--ink)}
+.feature-card .fc-body span{font-size:13px;color:var(--dim);margin-top:2px}
+.feature-card .fc-body .mono{margin-bottom:2px;color:var(--amber)}
+
+/* image grading on real photos */
+.media-img{object-fit:cover;object-position:center 20%;filter:grayscale(.2) contrast(1.06) saturate(.92)}
+.f2 .media-img{object-position:center 30%;filter:grayscale(.1) contrast(1.05) saturate(1.02)}
+.f3 .media-img{object-position:70% 40%;filter:grayscale(.12) contrast(1.06) saturate(1.06)}
+.f4 .media-img{object-position:center center;filter:grayscale(.05) contrast(1.08) saturate(1.1)}
+.portrait .media-img{object-position:center 15%;filter:grayscale(.15) contrast(1.08)}
+
+@media (max-width:820px){
+  .feature-card{max-width:none}
+  .feature-card img{width:96px;height:64px}
+  .ph-inline .media-img{object-position:center 25%}
+}
+
+
+/* ===== FULL CIRCLE ENDING =====
+   After Tablå the same prism turns one more quarter (270°→360°) back to face I.
+   About + Contact sit beside the returned portrait; face I's labels/shade fade out
+   (driven by --f1-labels from JS) so the final state is the clean portrait. */
+.about{display:flex;flex-direction:column;justify-content:center;max-width:52vw}
+.about .lead{max-width:40ch}
+.outro{max-width:52vw}
+.outro h2{font-size:clamp(34px,3.8vw,58px)}
+.contact-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:620px;margin-top:26px}
+.contact-grid > div{padding:12px 16px 12px 0}
+.contact-grid a{font-size:19px}
+.contact-grid small{font-size:12px}
+.face.f1 > :not(.ph):not(.media-img){opacity:var(--f1-labels,1)}
+.ph-inline.clean .num,.ph-inline.clean .tag{display:none}
+.ph-inline.clean{height:auto;aspect-ratio:4/5;max-height:none}
+.ph-inline.clean .media-img{object-position:center 15%}
+@media (max-width:820px){
+  .about,.outro{max-width:none}
+  .about{display:flex;flex-direction:column;align-items:stretch;gap:0}
+  .contact-grid{grid-template-columns:1fr}
+}
+
+footer nav{flex-wrap:wrap}
+footer nav a{white-space:nowrap}
+</style>
+</head>
+<body class="no-js">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <a class="name" href="#intro">Jonathan Silén</a>
+  <span class="mono">Actor · Filmmaker · Critic · Builder</span>
+</header>
+
+<!-- Decorative 3D prism, hidden from assistive tech. Images: same files as in <main>. -->
+<div class="stage" aria-hidden="true">
+  <div class="prism-wrap" id="wrap">
+    <div class="prism" id="prism">
+      <div class="face f1"><div class="ph"></div><img class="media-img" src="media/actor-hero.jpg" alt="" data-optional><div class="shade"></div><span class="mono">I · Actor</span><div><div class="num">I</div><div class="lbl">On stage &amp; screen</div></div><span class="tag mono">[media/actor-hero.jpg]</span></div>
+      <div class="face f2"><div class="ph"></div><img class="media-img" src="media/push-the-button-still.jpg" alt="" data-optional><div class="shade"></div><span class="mono">II · Filmmaker</span><div><div class="num">II</div><div class="lbl">Push the Button</div></div><span class="tag mono">[media/push-the-button-still.jpg]</span></div>
+      <div class="face f3"><div class="ph"></div><img class="media-img" src="media/critic-hero.jpg" alt="" data-optional><div class="shade"></div><span class="mono">III · Critic &amp; artist</span><div><div class="num">III</div><div class="lbl">Resistance</div></div><span class="tag mono">[media/critic-hero.jpg]</span></div>
+      <div class="face f4 has-anim"><div class="ph"></div>
+        <!-- ===== TABLÅ ANIMATION (face) — swappable, see TABLÅ ANIMATION block in <script> ===== -->
+        <div class="tabla-anim" data-tabla-anim="face"></div>
+        <div class="shade"></div><span class="mono">IV · Builder</span><div><div class="num">IV</div><div class="lbl">Tablå</div></div></div>
+    </div>
+  </div>
+</div>
+
+<nav aria-label="Sections">
+  <ul class="dots" id="dots">
+    <li><a href="#intro"><span class="t mono">Intro</span><span class="d"></span></a></li>
+    <li><a href="#actor"><span class="t mono">Actor</span><span class="d"></span></a></li>
+    <li><a href="#filmmaker"><span class="t mono">Filmmaker</span><span class="d"></span></a></li>
+    <li><a href="#critic"><span class="t mono">Critic &amp; artist</span><span class="d"></span></a></li>
+    <li><a href="#tabla"><span class="t mono">Tablå</span><span class="d"></span></a></li>
+    <li><a href="#about"><span class="t mono">About</span><span class="d"></span></a></li>
+    <li><a href="#contact"><span class="t mono">Contact</span><span class="d"></span></a></li>
+  </ul>
+</nav>
+
+<div class="spine" id="spine" aria-hidden="true">
+  <div class="ends mono"><span>Resistance</span><span>Building</span></div>
+  <div class="track"><span class="dot" id="spineDot"></span></div>
+</div>
+
+<main id="main">
+  <section id="intro" class="intro" aria-labelledby="h-intro">
+    <p class="kicker mono">Actor · Screenwriter · Film producer</p>
+    <h1 id="h-intro">Jonathan<br><em>Silén</em></h1>
+    <p class="lead">Jonathan Silén is a Swedish actor, screenwriter and film producer, nominated for a Guldbagge for best male actor. One foot in resistance to AI, the other in building it.</p>
+    <p class="hint mono" aria-hidden="true"><span>↓</span>&nbsp; Scroll — four sides, one at a time</p>
+  </section>
+
+  <section id="actor" class="face-sec content-step" data-face="0" aria-labelledby="h-actor">
+    <div class="ph-inline f1"><div class="ph"></div><img class="media-img" src="media/actor-hero.jpg" alt="Jonathan Silén on stage" loading="lazy" data-optional><span class="num" aria-hidden="true">I</span><span class="tag mono">[media/actor-hero.jpg]</span></div>
+    <p class="kicker mono">I — The actor</p>
+    <h2 id="h-actor">On stage <em>and</em> screen</h2>
+    <p class="lead">Nominated for a Guldbagge, Sweden’s most prestigious film award, for best male actor.</p>
+    <p class="lead">In autumn 2027 Jonathan is at the Royal Dramatic Theatre in Stockholm.</p>
+    <div class="meta mono">
+      <button type="button" class="play" data-video="showreel">Watch showreel</button>
+      <a href="#contact" data-link="agent">Agent</a>
+      <a href="#" data-link="cv">Selected work</a>
+    </div>
+    <p class="credit">Photo: Dramaten</p>
+  </section>
+
+  <section id="filmmaker" class="face-sec content-step" data-face="1" aria-labelledby="h-film">
+    <div class="ph-inline f2"><div class="ph"></div><img class="media-img" src="media/push-the-button-still.jpg" alt="Still from Push the Button" loading="lazy" data-optional><span class="num" aria-hidden="true">II</span><span class="tag mono">[media/push-the-button-still.jpg]</span></div>
+    <p class="kicker mono">II — The filmmaker</p>
+    <h2 id="h-film">Push <em>the</em> Button</h2>
+    <p class="lead">He co-founded the production company ÖGAT Film (Ögat AB). He writes screenplays, produces and acts, and is Guldbagge-nominated for best male actor.</p>
+    <p class="lead">Next: <em>Push the Button</em>, a feature he produced, about shutting down the internet to stop the algorithm. Premiering soon.</p>
+    <!-- Hidden documentary line: visible only with ?draft=1. Do not name the subject. -->
+    <p class="draft-only">[Draft — hidden] Also in development: a documentary.</p>
+    <div class="meta mono">
+      <button type="button" class="play" data-video="trailer">Watch trailer</button>
+      <a href="https://ogatfilm.se/" data-link="ogat">ÖGAT Film</a>
+      <a href="#contact" data-link="press">Press</a>
+    </div>
+    <p class="credit">Still: Ola Kjelbye / Ögat Film</p>
+  </section>
+
+  <section id="critic" class="face-sec content-step" data-face="2" aria-labelledby="h-critic">
+    <div class="ph-inline f3"><div class="ph"></div><img class="media-img" src="media/critic-hero.jpg" alt="Jonathan Silén speaking about AI risk" loading="lazy" data-optional><span class="num" aria-hidden="true">III</span><span class="tag mono">[media/critic-hero.jpg]</span></div>
+    <p class="kicker mono">III — The critic &amp; artist</p>
+    <h2 id="h-critic">One foot in <em>resistance</em></h2>
+    <p class="lead">Active in the Swedish movement warning about the risks of AI. He has presented on AI risk at the World Economic Forum.</p>
+    <p class="lead">With Frida Röhl at Folkteatern he makes <em>Folk Nation</em>.</p>
+    <a class="feature-card" data-link="folknation" href="https://www.folkteatern.se/events/folk-nation" target="_blank" rel="noopener">
+      <img src="media/folk-nation-yt.jpg" alt="Folk Nation" width="112" height="72" loading="lazy">
+      <div class="fc-body">
+        <span class="mono">Watch</span>
+        <strong>Folk Nation</strong>
+        <span>With Frida Röhl · Folkteatern</span>
+      </div>
+    </a>
+    <div class="meta mono">
+      <a href="https://www.youtube.com/watch?v=S7UZk9coE6o" data-link="folknationYt" target="_blank" rel="noopener">Watch on YouTube</a>
+      <a href="#contact" data-link="talks">Talks &amp; enquiries</a>
+    </div>
+    <p class="credit">Image: Folkteatern</p>
+  </section>
+
+  <section id="tabla" class="face-sec content-step" data-face="3" aria-labelledby="h-tabla">
+    <div class="ph-inline f4 has-anim"><div class="ph"></div>
+      <!-- ===== TABLÅ ANIMATION (mobile card) — swappable ===== -->
+      <div class="tabla-anim" data-tabla-anim="card" aria-hidden="true"></div>
+      <span class="num" aria-hidden="true">IV</span></div>
+    <p class="kicker mono">IV — The builder</p>
+    <h2 id="h-tabla">Tablå</h2>
+    <p class="lead">Co-developed by Jonathan with Erik Rosales and Leonard Pauli. One AI-native system for theatres — replacing about twenty programs.</p>
+    <p class="lead">Lighting, schedule, marketing, tickets: planned and visualised together. An AI engine at the core, like a brilliant stage manager.</p>
+    <div class="meta mono">
+      <a href="#" data-link="tabla">Visit Tablå</a>
+      <a href="#contact" data-link="tablaContact">Talk to us about Tablå</a>
+    </div>
+  </section>
+
+  <!-- FULL CIRCLE: on desktop the prism is back on face I (clean portrait) beside About + Contact.
+       On mobile this clean portrait card (no numeral/labels) ends the stack. -->
+  <section id="about" class="about content-step" aria-labelledby="h-about">
+    <div class="ph-inline f1 clean"><div class="ph"></div><img class="media-img" src="media/actor-hero.jpg" alt="Portrait of Jonathan Silén" loading="lazy" data-optional></div>
+    <div>
+      <p class="kicker mono">About</p>
+      <h2 id="h-about">Both, <em>at once</em></h2>
+      <p class="lead">Jonathan Silén is a Swedish actor, screenwriter and film producer. Nominated for a Guldbagge, Sweden’s most prestigious film award, for best male actor. In autumn 2027 he is at the Royal Dramatic Theatre in Stockholm.</p>
+      <p class="lead">Through ÖGAT Film, the production company he co-founded, he produced the feature <em>Push the Button</em>. With Frida Röhl he makes <em>Folk Nation</em> at Folkteatern.</p>
+      <p class="lead">Active in the Swedish movement warning about the risks of AI — and a speaker on the subject at the World Economic Forum. With Erik Rosales and Leonard Pauli he co-develops Tablå, an AI-native platform for theatres.</p>
+      <div class="split">
+        <div><span class="mono r">Resistance</span><p>Warning about the risks of AI.</p></div>
+        <div><span class="mono b">Building</span><p>Building one system for theatres.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="outro content-step" aria-labelledby="h-contact">
+    <p class="kicker mono">Contact</p>
+    <h2 id="h-contact">Four sides.<br><em>One person.</em></h2>
+    <div class="contact-grid">
+      <div><span class="mono">Acting — agent</span><a href="#" data-link="agentEmail"><span class="placeholder">[Agent name]</span></a><small>[agency] · [agent email]</small></div>
+      <div><span class="mono">Press</span><a href="#" data-link="pressEmail"><span class="placeholder">[press email]</span></a><small>[Press kit / photos link]</small></div>
+      <div><span class="mono">General &amp; talks</span><a href="#" data-link="email"><span class="placeholder">[email]</span></a><small>Talks, collaborations, everything else</small></div>
+      <div><span class="mono">Film — ÖGAT Film</span><a href="https://ogatfilm.se/" data-link="ogat">ÖGAT Film</a><small>ogatfilm.se · Ögat AB</small></div>
+      <div><span class="mono">Tablå</span><a href="#" data-link="tabla">Tablå</a><small><span class="placeholder">[tabla link / contact]</span></small></div>
+    </div>
+  </section>
+</main>
+
+<footer class="mono">
+  <span>© <span id="yr"></span> Jonathan Silén</span>
+  <nav aria-label="Footer">
+    <a href="https://ogatfilm.se/" data-link="ogat">ÖGAT Film</a>
+    <a href="#" data-link="tabla">Tablå</a>
+    <a href="#" data-link="instagram">[Instagram]</a>
+    <a href="#" data-link="linkedin">[LinkedIn]</a>
+  </nav>
+</footer>
+
+<dialog class="video" id="videoDialog" aria-labelledby="videoTitle">
+  <div class="bar"><span class="mono" id="videoTitle">Video</span><button type="button" id="videoClose">Close ✕</button></div>
+  <div class="frame" id="videoFrame"></div>
+</dialog>
+
+<script>
+/* ============================================================
+   SITE_CONFIG — swap placeholders here.
+   Links: leave "" to keep the placeholder (#).
+   Videos: paste an EMBED url, e.g. https://player.vimeo.com/video/ID
+           or https://www.youtube-nocookie.com/embed/ID
+   ============================================================ */
+const SITE_CONFIG = {
+  links: {
+    agentEmail:  "",   // mailto:agent@agency.com
+    pressEmail:  "",   // mailto:press@...
+    email:       "",   // mailto:hello@jonathansilen.com
+    ogat:        "https://ogatfilm.se/",
+    tabla:       "",   // https://... (Tablå)
+    tablaContact:"",   // mailto:... or https://...
+    folknation:  "https://www.folkteatern.se/events/folk-nation",
+    folknationYt:"https://www.youtube.com/watch?v=S7UZk9coE6o",
+    cv:          "",   // https://... (IMDb / CV PDF)
+    instagram:   "",
+    linkedin:    ""
+  },
+  video: {
+    showreel: { title: "Showreel", embed: "" },            // PLACEHOLDER
+    trailer:  { title: "Push the Button — trailer", embed: "" } // PLACEHOLDER
+  }
+};
+
+(function(){
+  document.body.classList.remove('no-js');
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  if (new URLSearchParams(location.search).get('draft')==='1') document.body.classList.add('show-draft');
+
+  // links from config
+  document.querySelectorAll('[data-link]').forEach(a=>{
+    const v = SITE_CONFIG.links[a.dataset.link];
+    if (v) { a.href = v; if (/^https?:/.test(v)) { a.target="_blank"; a.rel="noopener"; } }
+  });
+  // optional images: show placeholder light until a real file exists
+  document.querySelectorAll('img[data-optional]').forEach(img=>{
+    const ok=()=>img.parentElement.classList.add('has-img');
+    const bad=()=>img.remove();
+    if (img.complete) { img.naturalWidth ? ok() : bad(); }
+    else { img.addEventListener('load',ok); img.addEventListener('error',bad); }
+  });
+  // video dialog
+  const dlg=document.getElementById('videoDialog'), frame=document.getElementById('videoFrame'), vt=document.getElementById('videoTitle');
+  document.querySelectorAll('[data-video]').forEach(b=>b.addEventListener('click',()=>{
+    const v=SITE_CONFIG.video[b.dataset.video]; vt.textContent=v.title;
+    frame.innerHTML = v.embed
+      ? `<iframe src="${v.embed}" title="${v.title}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`
+      : `<p class="mono">[${v.title} embed placeholder — set SITE_CONFIG.video.${b.dataset.video}.embed]</p>`;
+    dlg.showModal();
+  }));
+  const close=()=>{dlg.close();frame.innerHTML='';};
+  document.getElementById('videoClose').addEventListener('click',close);
+  dlg.addEventListener('click',e=>{if(e.target===dlg)close()});
+  dlg.addEventListener('close',()=>{frame.innerHTML='';});
+
+  // prism
+  const prism=document.getElementById('prism'), wrap=document.getElementById('wrap');
+  const spine=document.getElementById('spine'), spineDot=document.getElementById('spineDot');
+  const faces=[...document.querySelectorAll('[data-face]')];
+  const links=[...document.querySelectorAll('#dots a')];
+  const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+  const rm=matchMedia('(prefers-reduced-motion: reduce)');
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+  let ticking=false;
+  function update(){
+    ticking=false;
+    const vh=innerHeight, y=scrollY;
+    const top0=faces[0].offsetTop, top3=faces[3].offsetTop;
+    // 0..3 across the four faces; then FULL CIRCLE: 3..4 (back to face I) once the
+    // Tablå animation has completed (tabla top + .35vh) until About arrives.
+    const about=document.getElementById('about');
+    let p;
+    if(y<=top3) p=clamp((y-top0)/((top3-top0)/3||vh),0,3);
+    else { const s=top3+vh*.35, e=Math.max(s+1,about.offsetTop); p=3+clamp((y-s)/(e-s),0,1); }
+    if(rm.matches) p=Math.round(p);
+    const tIn=clamp(y/top0,0,1);
+    const tilt=rm.matches?0:(1-tIn)*-18;
+    prism.style.transform=`translateZ(calc(var(--W)/-2)) rotateX(${tilt}deg) rotateY(${-90*p}deg)`;
+    wrap.style.transform=rm.matches?'none':`scale(${0.92+0.08*tIn})`;
+    // face I labels fade out on the way back -> clean portrait in the final state
+    document.documentElement.style.setProperty('--f1-labels',(1-clamp((p-3.5)/.5,0,1)).toFixed(3));
+    spineDot.style.left=(Math.min(p,3)/3*100)+'%';
+    spine.style.opacity=(tIn>.3&&p<3.3)?1:0;
+    let act=0,best=1e9;
+    secs.forEach((s,i)=>{const r=s.getBoundingClientRect();const d=Math.abs(r.top+Math.min(r.height,vh)/2-vh/2);if(d<best){best=d;act=i}});
+    links.forEach((a,i)=>a.setAttribute('aria-current',i===act?'true':'false'));
+    secs.forEach((s,i)=>s.classList.toggle('on',i===act));
+  }
+  const onScroll=()=>{if(!ticking){ticking=true;requestAnimationFrame(update)}};
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll);
+  links.forEach(a=>a.addEventListener('click',e=>{
+    e.preventDefault();
+    const el=document.querySelector(a.getAttribute('href'));
+    el.scrollIntoView({behavior:rm.matches?'auto':'smooth',block:'start'});
+    el.setAttribute('tabindex','-1'); el.focus({preventScroll:true});
+    history.replaceState(null,'',a.getAttribute('href'));
+  }));
+  addEventListener('keydown',e=>{
+    if(!['ArrowDown','ArrowUp'].includes(e.key)||innerWidth<=820||dlg.open) return;
+    const cur=links.findIndex(a=>a.getAttribute('aria-current')==='true');
+    const nxt=clamp(cur+(e.key==='ArrowDown'?1:-1),0,links.length-1);
+    e.preventDefault(); links[nxt].click();
+  });
+  update();
+})();
+</script>
+
+<script>
+/* ==========================================================================
+   TABLÅ ANIMATION — scroll-driven, swappable block. To replace with a video or Lottie:
+   delete this <script> and put e.g. <video autoplay muted loop playsinline
+   src="media/tabla.mp4"></video> inside the two [data-tabla-anim] elements.
+   ========================================================================== */
+let uid = 0;
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const ease = (t) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const lerp = (a, b, t) => a + (b - a) * t;
+const MODULES = ["Lighting", "Schedule", "Tickets", "Marketing", "Visualisation"];
+const MOD_START = [[0.2, 0.08], [0.86, 0.26], [0.84, 0.74], [0.16, 0.7], [0.17, 0.4]];
+const OLD_START = [
+  [0.08, 0.2],
+  [0.3, 0.06],
+  [0.55, 0.12],
+  [0.78, 0.07],
+  [0.95, 0.16],
+  [0.7, 0.24],
+  [0.94, 0.55],
+  [0.78, 0.72],
+  [0.62, 0.94],
+  [0.4, 0.88],
+  [0.22, 0.95],
+  [0.05, 0.66],
+  [0.28, 0.32],
+  [0.66, 0.4],
+  [0.36, 0.7]
+];
+function mountTablaAnimation(host, opts = {}) {
+  const W = opts.wide ? 400 : 300, H = opts.wide ? 240 : 400;
+  const cx = W / 2, cy = H * (opts.wide ? 0.5 : 0.42), Rx = W * (opts.wide ? 0.34 : 0.33), Ry = H * (opts.wide ? 0.34 : 0.25);
+  const id = `ta${++uid}`;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const mods = MODULES.map((label, i) => {
+    const a = (-90 + i * 72) * Math.PI / 180;
+    const w = label.length * 5.6 + 18;
+    return { label, w, fx: cx + Rx * Math.cos(a), fy: cy + Ry * Math.sin(a), sx: MOD_START[i][0] * W, sy: MOD_START[i][1] * H };
+  });
+  const olds = OLD_START.map(([x, y]) => ({ sx: x * W, sy: y * H }));
+  host.innerHTML = `
+<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false" style="width:100%;height:100%;display:block">
+  <defs>
+    <radialGradient id="${id}g"><stop offset="0" stop-color="#7fb7c4" stop-opacity=".55"/><stop offset="1" stop-color="#7fb7c4" stop-opacity="0"/></radialGradient>
+  </defs>
+  <g data-root>
+    <circle cx="${cx}" cy="${cy}" r="${Math.min(W, H) * 0.32}" fill="url(#${id}g)" data-glow/>
+    <g data-lines>${mods.map(() => `<line stroke="#7fb7c4" stroke-width=".6" stroke-opacity=".55" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>`).join("")}</g>
+    <g data-old>${olds.map(() => `<g><rect x="-15" y="-5" width="30" height="10" rx="1" fill="none" stroke="#ece8e1" stroke-opacity=".35" stroke-width=".5"/><line x1="-10" y1="0" x2="4" y2="0" stroke="#ece8e1" stroke-opacity=".25" stroke-width=".5"/></g>`).join("")}</g>
+    <g data-sig>${mods.map(() => `<circle r="1.4" fill="#ece8e1" opacity="0"/>`).join("")}</g>
+    <g data-mods>${mods.map((m) => `<g><rect x="${-m.w / 2}" y="-10" width="${m.w}" height="20" rx="1" fill="#0b0f10" fill-opacity=".9" stroke="#7fb7c4" stroke-opacity=".7" stroke-width=".7"/><text x="0" y="3" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, monospace" font-size="7.5" letter-spacing=".9" fill="#ece8e1">${m.label.toUpperCase()}</text></g>`).join("")}</g>
+    <circle cx="${cx}" cy="${cy}" r="12" fill="none" stroke="#7fb7c4" stroke-width=".7" opacity="0" data-ring/>
+    <circle cx="${cx}" cy="${cy}" r="10" fill="#0b0f10" stroke="#7fb7c4" stroke-width="1" data-core/>
+    <circle cx="${cx}" cy="${cy}" r="3" fill="#7fb7c4" data-dot/>
+  </g>
+</svg>`;
+  const svg = host.querySelector("svg");
+  const q = (s) => svg.querySelector(s);
+  const ring = q("[data-ring]"), core = q("[data-core]"), dot = q("[data-dot]"), glow = q("[data-glow]");
+  const lines = Array.from(q("[data-lines]").children);
+  const oldEls = Array.from(q("[data-old]").children);
+  const sigs = Array.from(q("[data-sig]").children);
+  const modEls = Array.from(q("[data-mods]").children);
+  const sub = (p, a, b) => clamp((p - a) / (b - a));
+  let progress = 0, pulseRaf = 0, pulseT0 = 0;
+  function render(p) {
+    const conv = ease(sub(p, 0.08, 0.62));
+    mods.forEach((m, i) => {
+      const x = lerp(m.sx, m.fx, conv), y = lerp(m.sy, m.fy, conv);
+      modEls[i].setAttribute("transform", `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
+      modEls[i].setAttribute("opacity", (0.55 + 0.45 * conv).toFixed(3));
+      const L = lines[i];
+      L.setAttribute("x1", String(cx));
+      L.setAttribute("y1", String(cy));
+      L.setAttribute("x2", x.toFixed(1));
+      L.setAttribute("y2", y.toFixed(1));
+    });
+    const oc = ease(sub(p, 0.12, 0.6));
+    oldEls.forEach((o, i) => {
+      const st = olds[i];
+      o.setAttribute("transform", `translate(${lerp(st.sx, cx, oc).toFixed(1)} ${lerp(st.sy, cy, oc).toFixed(1)}) scale(${(1 - 0.7 * oc).toFixed(3)})`);
+      o.setAttribute("opacity", (1 - sub(p, 0.3, 0.6)).toFixed(3));
+    });
+    const drawn = ease(sub(p, 0.4, 0.8));
+    lines.forEach((L) => L.setAttribute("stroke-dashoffset", (1 - drawn).toFixed(3)));
+    const unify = ease(sub(p, 0.6, 1));
+    core.setAttribute("opacity", (0.3 + 0.7 * conv).toFixed(3));
+    core.setAttribute("r", (7 + 3 * unify).toFixed(2));
+    dot.setAttribute("opacity", (0.25 + 0.75 * conv).toFixed(3));
+    glow.setAttribute("opacity", (0.1 + 0.9 * unify).toFixed(3));
+    sigs.forEach((sg, i) => {
+      const m = mods[i], k = 0.35 + 0.65 * unify;
+      sg.setAttribute("cx", lerp(cx, m.fx, k).toFixed(1));
+      sg.setAttribute("cy", lerp(cy, m.fy, k).toFixed(1));
+      sg.setAttribute("opacity", (drawn * 0.7).toFixed(3));
+    });
+  }
+  const pulse = (now) => {
+    if (!pulseT0) pulseT0 = now;
+    const ph = (now - pulseT0) / 1e3 % 3.2 / 3.2;
+    ring.setAttribute("r", (11 + 22 * ph).toFixed(1));
+    ring.setAttribute("opacity", (0.28 * (1 - ph) * ease(sub(progress, 0.9, 1))).toFixed(3));
+    pulseRaf = requestAnimationFrame(pulse);
+  };
+  const stopPulse = () => {
+    cancelAnimationFrame(pulseRaf);
+    pulseRaf = 0;
+    pulseT0 = 0;
+    ring.setAttribute("opacity", "0");
+  };
+  render(reduced ? 1 : 0);
+  return {
+    setProgress(p) {
+      if (reduced) return;
+      progress = clamp(p);
+      render(progress);
+      const onScreen = p > -0.5 && p < 1.5 && !document.hidden;
+      if (progress > 0.9 && onScreen) {
+        if (!pulseRaf) pulseRaf = requestAnimationFrame(pulse);
+      } else if (pulseRaf) stopPulse();
+    },
+    destroy() {
+      stopPulse();
+      host.innerHTML = "";
+    }
+  };
+}
+function faceProgress() {
+  const tabla = document.getElementById("tabla"), critic = document.getElementById("critic");
+  if (!tabla || !critic) return 1;
+  const vh = window.innerHeight;
+  const start = critic.offsetTop + 0.35 * vh, end = tabla.offsetTop + 0.3 * vh;
+  return (window.scrollY - start) / (end - start);
+}
+function cardProgress(el) {
+  const vh = window.innerHeight, top = el.getBoundingClientRect().top;
+  return (vh * 0.95 - top) / (vh * 0.75);
+}
+function bindTablaScroll(anim, getProgress) {
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    anim.setProgress(getProgress());
+  };
+  const on = () => {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(update);
+    }
+  };
+  window.addEventListener("scroll", on, { passive: true });
+  window.addEventListener("resize", on);
+  document.addEventListener("visibilitychange", on);
+  update();
+  return () => {
+    window.removeEventListener("scroll", on);
+    window.removeEventListener("resize", on);
+    document.removeEventListener("visibilitychange", on);
+  };
+}
+document.querySelectorAll('[data-tabla-anim]').forEach(function(host){
+  var face = host.dataset.tablaAnim === 'face';
+  var anim = mountTablaAnimation(host, { wide: !face });
+  bindTablaScroll(anim, face ? faceProgress : function(){ return cardProgress(host); });
+});
+</script>
+</body>
+</html>
