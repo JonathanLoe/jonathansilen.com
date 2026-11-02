@@ -7,6 +7,18 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0b0b0c">
 <link rel="icon" href="/media/favicon.svg" type="image/svg+xml">
+<script>
+(function(){
+  var d=document.documentElement,l="sv";
+  try{
+    var q=new URLSearchParams(location.search).get("lang");
+    if(q==="en"||q==="sv"){l=q;localStorage.setItem("cv-lang",q);}
+    else if(localStorage.getItem("cv-lang")==="en"){l="en";}
+  }catch(e){}
+  d.classList.add("js");
+  if(l==="en"){d.classList.add("l-en");d.lang="en";document.title="Jonathan Silén – CV (English)";}
+})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
@@ -23,9 +35,18 @@ html{background:var(--bg)}
 body{color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;font-size:17px}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+html:not(.l-en) .en{display:none}
+html.l-en .sv{display:none}
 .wrap{max-width:760px;margin:0 auto;padding:40px 24px 72px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .back{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
 .back:hover{color:var(--ink)}
+.lang{display:none;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--dim)}
+html.js .lang{display:flex}
+.lang button{all:unset;cursor:pointer;padding:4px 2px;color:var(--dim);border-bottom:1px solid transparent}
+.lang button:hover{color:var(--ink)}
+.lang button:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.lang button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--amber)}
 header.cv{margin:48px 0 40px;padding-bottom:28px;border-bottom:1px solid var(--line)}
 h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,8vw,76px);line-height:.95;letter-spacing:-.01em}
 .role{margin-top:14px;font-size:clamp(17px,2.4vw,20px);color:#d5d0c8}
@@ -36,6 +57,7 @@ h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,8vw,76px);line-
 section{margin-top:36px}
 h2{font-family:var(--mono);font-weight:400;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:14px}
 p{color:#d5d0c8;max-width:62ch}
+section p + p{margin-top:12px}
 ul{list-style:none}
 li{position:relative;padding-left:20px;margin:0 0 10px;color:#d5d0c8}
 li::before{content:"";position:absolute;left:2px;top:.78em;width:8px;height:1px;background:var(--dim)}
@@ -47,40 +69,51 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line)}
   .contact .sep{display:none}
   .contact span.item{display:block;margin-top:4px}
 }
-@page{size:A4;margin:14mm 16mm}
+@page{size:A4;margin:12mm 15mm}
 @media print{
   html,body{background:#fff !important;color:#111}
-  body{font-size:10pt;line-height:1.4}
+  body{font-size:9.5pt;line-height:1.38}
   .wrap{max-width:none;padding:0}
-  .back,footer{display:none}
-  header.cv{margin:0 0 14pt;padding-bottom:10pt;border-bottom:1px solid #bbb}
-  h1{font-size:30pt;color:#111}
-  .role{color:#333;font-size:12pt;margin-top:6pt}
-  .contact{color:#444;font-size:9pt;margin-top:6pt}
+  .bar,footer,.lang{display:none !important}
+  header.cv{margin:0 0 10pt;padding-bottom:8pt;border-bottom:1px solid #bbb}
+  h1{font-size:28pt;color:#111}
+  .role{color:#333;font-size:11.5pt;margin-top:5pt}
+  .contact{color:#444;font-size:8.5pt;margin-top:5pt}
   .contact a{border:0;color:#111}
-  section{margin-top:11pt;break-inside:auto}
-  h2{color:#7a5a1a;font-size:8.5pt;margin-bottom:6pt;break-after:avoid}
+  section{margin-top:9pt;break-inside:auto}
+  h2{color:#7a5a1a;font-size:8pt;margin-bottom:5pt;break-after:avoid}
   p,li{color:#222}
   p{max-width:none}
-  li{margin-bottom:3pt;break-inside:avoid}
+  section p + p{margin-top:4pt}
+  li{margin-bottom:2.5pt;break-inside:avoid}
   li::before{background:#888}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
-<a class="back" href="/">← jonathansilen.com</a>
+<div class="bar">
+  <a class="back" href="/">← jonathansilen.com</a>
+  <div class="lang" role="group" aria-label="Språk / Language">
+    <button type="button" data-set="sv" aria-pressed="true" lang="sv">SV</button><span aria-hidden="true">/</span><button type="button" data-set="en" aria-pressed="false" lang="en">EN</button>
+  </div>
+</div>
 
 <header class="cv">
   <h1>Jonathan Silén</h1>
-  <p class="role">Praktisk AI-utvecklare och pedagog · Skådespelare och filmproducent</p>
-  <p class="contact"><span class="item"><a href="mailto:jonathan@ogatfilm.se">jonathan@ogatfilm.se</a></span><span class="sep">·</span><span class="item"><a href="tel:+46736376502">073-637 65 02</a></span><span class="sep">·</span><span class="item">Stockholm</span></p>
+  <p class="role"><span class="sv">Praktisk AI-utvecklare och pedagog · Skådespelare och filmproducent</span><span class="en" lang="en">Practical AI developer and educator · Actor and film producer</span></p>
+  <p class="contact"><span class="item"><a href="mailto:jonathan.silen@gmail.com">jonathan.silen@gmail.com</a></span><span class="sep">·</span><span class="item"><a href="tel:+46736376502">073-637 65 02</a></span><span class="sep">·</span><span class="item">Stockholm</span></p>
 </header>
 
 <main>
+<!-- ===================== SVENSKA ===================== -->
+<div class="sv">
 <section>
   <h2>Profil</h2>
-  <p>Jag lär ut AI som jag själv använder det: praktiskt, konkret och i riktiga verksamheter. Jag har nio år som lärare på högskolenivå och lång erfarenhet av att leda workshops. Varje dag bygger jag AI-system som används på riktigt. Jag arbetar agentiskt i system som jag själv har tagit fram, där flera AI-agenter delar på research, mejl, kalender, ekonomi och produktion. Jag kan förklara tekniken för människor som inte är tekniker, eftersom jag själv kommer från konsten och inte från IT.</p>
+  <p>Jag bygger skräddarsydda mjukvarusystem med hjälp av AI. Systemen är gjorda för att både människor och AI-agenter ska kunna arbeta i dem. Jag lär också ut, mycket praktiskt, hur man låter AI-agenter sköta den vanliga, tråkiga administrationen.</p>
+  <p>Arbetet går till så här. Administrativa uppgifter som i dag sköts för hand flyttas in i strukturerade system, eller tas över helt av en agent. Hur mycket det ger beror på hur långt man vill gå. En större omställning kan ge 30–50 procent i tidsvinst på de administrativa flödena. Att bara låta agenter ta över enskilda uppgifter kan ge upp till 20 procent. Jag arbetar med organisationer som ser värdet i att investera för att nå dit.</p>
+  <p>Tiden är dessutom bara en del av vinsten. När informationen ligger i ett system i stället för i mejl och kalkylark blir det färre fel och bättre översikt, och det blir tydligt vem som har tillgång till vad. Det är ofta de effekterna man märker först.</p>
+  <p>Jag arbetar huvudsakligen med kulturorganisationer, och där handlar det sällan om att skära ner eller säga upp folk. Snarare om att personalen ska få det mindre stressigt. Att man ska kunna ta ledigt när man behöver, eller byta jobb, utan att verksamheten hotas för att den tysta kunskapen försvinner ut genom dörren. När rutinerna finns i systemet i stället för i en enda persons huvud blir organisationen mindre sårbar. Lägre kostnader är bara ett av flera värden.</p>
 </section>
 
 <section>
@@ -119,13 +152,84 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line)}
 <section>
   <h2>Konstnärlig bakgrund</h2>
   <ul>
-    <li>Medgrundare av ÖGAT Film (2011). Det moderna projektet (2016): medförfattare, producent och huvudroll, Guldbagge-nominerad för bästa manliga huvudroll. Tryck på knappen! (2026): utvecklingsprocess och AI-koordinator.</li>
+    <li>Startade filmproduktionsbolaget Ögat Film (2011). Det moderna projektet (2016): medförfattare, producent och huvudroll, Guldbagge-nominerad för bästa manliga huvudroll. Tryck på knappen! (2026): utvecklingsprocess och AI-koordinator.</li>
     <li>Skådespelare på Dramaten, Riksteatern, Playhouse och Borås Stadsteater samt i tv.</li>
   </ul>
 </section>
+</div>
+
+<!-- ===================== ENGLISH ===================== -->
+<div class="en" lang="en">
+<section>
+  <h2>Profile</h2>
+  <p>I build bespoke software systems with the help of AI. The systems are designed so that both people and AI agents can work in them. I also teach, in a very hands-on way, how to let AI agents handle the routine, tedious administration.</p>
+  <p>The work goes like this. Administrative tasks that are done by hand today are moved into structured systems, or taken over entirely by an agent. How much this gains depends on how far you want to go. A larger change can save 30–50 per cent of the time spent on administrative workflows. Simply letting agents take over individual tasks can save up to 20 per cent. I work with organisations that see the value of investing to get there.</p>
+  <p>Time is also only part of the gain. When information lives in a system rather than in emails and spreadsheets, there are fewer errors and a better overview, and it becomes clear who has access to what. These are often the effects people notice first.</p>
+  <p>I mainly work with cultural organisations, and there it is rarely about cutting back or letting people go. It is more about making work less stressful for staff. People should be able to take time off when they need to, or change jobs, without the organisation being put at risk because tacit knowledge walks out of the door. When routines live in the system rather than in one person’s head, the organisation becomes less vulnerable. Lower costs are just one of several benefits.</p>
+</section>
+
+<section>
+  <h2>AI in practice</h2>
+  <ul>
+    <li>Malmö Opera, employed since May 2026: AI support and software solutions for production and planning</li>
+    <li>Follow the Rabbit, co-founder: AI consultants who build operating systems and automation for organisations</li>
+    <li>Colombine Teaterförlag, first major client: automated finance and contract management, supported by a digital development voucher from the Swedish Agency for Economic and Regional Growth (2025)</li>
+    <li>Tablå (in development): an AI-native platform for theatres that replaces around 20 programs, with an AI engine that works as a stage manager</li>
+    <li>Folk Nation, Folkteatern 2026: an AI-produced satirical series, made together with Frida Röhl</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Teaching</h2>
+  <ul>
+    <li>Senior Lecturer in Film Production and Acting, Stockholm University of the Arts (SKH), 2014–2023</li>
+    <li>Senior Lecturer in Film Production, University of Gothenburg, 2015–2017</li>
+    <li>AI workshop for all staff at Folkteatern 2025, on what professional roles become when AI takes over the monotonous work</li>
+    <li>Seminar host at the Gothenburg Book Fair 2025 on AI and automation in the cultural sector</li>
+    <li>Panel at the ETC conference in Sofia, November 2026</li>
+    <li>Host of the podcast KULTUR:KODEN on generative AI in practice, together with Erik Rosales</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <ul>
+    <li>Hyper Island, AI Business Consultant (Higher Vocational Education), 2023–2025</li>
+    <li>Master’s, Filmic Processes, Valand / University of Gothenburg</li>
+    <li>Bachelor’s in Acting, Academy of Music and Drama, Gothenburg, 2007–2010</li>
+    <li>Gender Studies A, introductory course, 2000</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Artistic background</h2>
+  <ul>
+    <li>Founded the film production company Ögat Film (2011). Det moderna projektet (2016): co-writer, producer and lead role; Guldbagge Award (Swedish Film Award) nomination for Best Actor. Push the Button! (2026): development process and AI coordinator.</li>
+    <li>Actor at Dramaten, Riksteatern, Playhouse and Borås Stadsteater, and on television.</li>
+  </ul>
+</section>
+</div>
 </main>
 
-<footer><a class="back" href="/">← Till startsidan</a></footer>
+<footer><a class="back" href="/"><span class="sv">← Till startsidan</span><span class="en" lang="en">← Back to home page</span></a></footer>
 </div>
+<script>
+(function(){
+  var d=document.documentElement;
+  var btns=document.querySelectorAll(".lang button");
+  function apply(l,save){
+    d.classList.toggle("l-en",l==="en");
+    d.lang=l;
+    document.title=l==="en"?"Jonathan Silén – CV (English)":"Jonathan Silén – CV";
+    for(var i=0;i<btns.length;i++){btns[i].setAttribute("aria-pressed",btns[i].getAttribute("data-set")===l?"true":"false");}
+    if(save){
+      try{localStorage.setItem("cv-lang",l);}catch(e){}
+      try{var u=new URL(location.href);if(l==="en"){u.searchParams.set("lang","en");}else{u.searchParams.delete("lang");}history.replaceState(null,"",u.pathname+u.search+u.hash);}catch(e){}
+    }
+  }
+  apply(d.classList.contains("l-en")?"en":"sv",false);
+  for(var i=0;i<btns.length;i++){btns[i].addEventListener("click",function(){apply(this.getAttribute("data-set"),true);});}
+})();
+</script>
 </body>
 </html>
