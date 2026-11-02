@@ -12,11 +12,12 @@
   var d=document.documentElement,l="sv";
   try{
     var q=new URLSearchParams(location.search).get("lang");
-    if(q==="en"||q==="sv"){l=q;localStorage.setItem("cv-lang",q);}
-    else if(localStorage.getItem("cv-lang")==="en"){l="en";}
+    var t={sv:1,en:1,be:1};
+    if(t[q]){l=q;localStorage.setItem("cv-lang",q);}
+    else{var st=localStorage.getItem("cv-lang");if(t[st]){l=st;}}
   }catch(e){}
   d.classList.add("js");
-  if(l==="en"){d.classList.add("l-en");d.lang="en";document.title="Jonathan Silén – CV (English)";}
+  if(l!=="sv"){d.classList.add("l-"+l);d.lang=l;document.title=l==="en"?"Jonathan Silén – CV (English)":"Jonathan Silén – CV (беларуская)";}
 })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,8 +36,8 @@ html{background:var(--bg)}
 body{color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;font-size:17px}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--amber);outline-offset:3px}
-html:not(.l-en) .en{display:none}
-html.l-en .sv{display:none}
+html:not(.l-en) .en,html:not(.l-be) .be{display:none}
+html.l-en .sv,html.l-be .sv{display:none}
 .wrap{max-width:760px;margin:0 auto;padding:40px 24px 72px}
 .bar{display:flex;justify-content:space-between;align-items:center;gap:16px}
 .back{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
@@ -94,15 +95,15 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line)}
 <div class="wrap">
 <div class="bar">
   <a class="back" href="/">← jonathansilen.com</a>
-  <div class="lang" role="group" aria-label="Språk / Language">
-    <button type="button" data-set="sv" aria-pressed="true" lang="sv">SV</button><span aria-hidden="true">/</span><button type="button" data-set="en" aria-pressed="false" lang="en">EN</button>
+  <div class="lang" role="group" aria-label="Språk / Language / Мова">
+    <button type="button" data-set="sv" aria-pressed="true" lang="sv">SV</button><span aria-hidden="true">/</span><button type="button" data-set="en" aria-pressed="false" lang="en">EN</button><span aria-hidden="true">/</span><button type="button" data-set="be" aria-pressed="false" lang="be">BE</button>
   </div>
 </div>
 
 <header class="cv">
   <h1>Jonathan Silén</h1>
-  <p class="role"><span class="sv">Praktisk AI-utvecklare och pedagog · Skådespelare och filmproducent</span><span class="en" lang="en">Practical AI developer and educator · Actor and film producer</span></p>
-  <p class="contact"><span class="item"><a href="mailto:jonathan.silen@gmail.com">jonathan.silen@gmail.com</a></span><span class="sep">·</span><span class="item"><a href="tel:+46736376502">073-637 65 02</a></span><span class="sep">·</span><span class="item">Stockholm</span></p>
+  <p class="role"><span class="sv">Praktisk AI-utvecklare och pedagog · Skådespelare och filmproducent</span><span class="en" lang="en">Practical AI developer and educator · Actor and film producer</span><span class="be" lang="be">Практычны распрацоўшчык ШІ і педагог · Акцёр і кінапрадзюсар</span></p>
+  <p class="contact"><span class="item"><a href="mailto:jonathan.silen@gmail.com">jonathan.silen@gmail.com</a></span><span class="sep">·</span><span class="item"><a href="tel:+46736376502">073-637 65 02</a></span><span class="sep">·</span><span class="item"><span class="sv">Stockholm</span><span class="en" lang="en">Stockholm</span><span class="be" lang="be">Стакгольм</span></span></p>
 </header>
 
 <main>
@@ -209,9 +210,60 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line)}
   </ul>
 </section>
 </div>
+<!-- ===================== БЕЛАРУСКАЯ ===================== -->
+<div class="be" lang="be">
+<section>
+  <h2>Профіль</h2>
+  <p>Я ствараю індывідуальныя праграмныя сістэмы з дапамогай ШІ. Сістэмы зроблены так, каб у іх маглі працаваць і людзі, і ШІ-агенты. Акрамя таго, я вельмі практычна вучу, як даручыць ШІ-агентам звычайную, нудную адміністрацыйную працу.</p>
+  <p>Праца выглядае так. Адміністрацыйныя задачы, якія сёння выконваюцца ўручную, пераносяцца ў структураваныя сістэмы або цалкам перадаюцца агенту. Колькі гэта дае, залежыць ад таго, наколькі далёка вы хочаце пайсці. Больш маштабная перабудова можа зэканоміць 30–50 працэнтаў часу ў адміністрацыйных працэсах. Калі проста перадаць агентам асобныя задачы, можна зэканоміць да 20 працэнтаў. Я працую з арганізацыямі, якія бачаць сэнс інвеставаць, каб гэтага дасягнуць.</p>
+  <p>Да таго ж час — толькі частка выгады. Калі інфармацыя захоўваецца ў сістэме, а не ў лістах і электронных табліцах, памылак становіцца менш, агляд — лепшы, і робіцца зразумела, хто мае доступ да чаго. Часта менавіта гэтыя вынікі заўважаюць першымі.</p>
+  <p>Я працую пераважна з арганізацыямі культуры, і там гаворка рэдка ідзе пра скарачэнні ці звальненні. Хутчэй пра тое, каб у супрацоўнікаў было менш стрэсу. Каб можна было ўзяць адпачынак, калі трэба, або змяніць працу, і пры гэтым справа не апынулася пад пагрозай таму, што няяўныя веды сыходзяць разам з чалавекам. Калі працоўныя працэдуры існуюць у сістэме, а не ў галаве аднаго чалавека, арганізацыя становіцца менш уразлівай. Ніжэйшыя выдаткі — толькі адна з некалькіх каштоўнасцей.</p>
+</section>
+
+<section>
+  <h2>ШІ на практыцы</h2>
+  <ul>
+    <li>Malmö Opera, у штаце з мая 2026 года: ШІ-падтрымка і праграмныя рашэнні для пастановак і планавання</li>
+    <li>Follow the Rabbit, сузаснавальнік: ШІ-кансультанты, якія ствараюць аперацыйныя сістэмы і аўтаматызацыю для арганізацый</li>
+    <li>Colombine Teaterförlag, першы буйны кліент: аўтаматызаванае вядзенне фінансаў і дагавораў пры падтрымцы ваўчара на лічбавае развіццё ад Шведскага агенцтва эканамічнага і рэгіянальнага росту (2025)</li>
+    <li>Tablå (у распрацоўцы): ШІ-натыўная платформа для тэатраў, якая замяняе каля 20 праграм, з ШІ-рухавіком, які працуе як памочнік рэжысёра</li>
+    <li>Folk Nation, Folkteatern 2026: сатырычны серыял, створаны з дапамогай ШІ, разам з Фрыдай Рёль</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Выкладанне і педагогіка</h2>
+  <ul>
+    <li>Старшы выкладчык кінавытворчасці і акцёрскага майстэрства, Стакгольмскі ўніверсітэт мастацтваў (SKH), 2014–2023</li>
+    <li>Старшы выкладчык кінавытворчасці, Гётэборгскі ўніверсітэт, 2015–2017</li>
+    <li>ШІ-воркшоп для ўсяго калектыву Folkteatern у 2025 годзе пра тое, якімі стануць прафесіі, калі ШІ возьме на сябе манатонную працу</li>
+    <li>Вядучы семінара на Гётэборгскім кніжным кірмашы 2025 года пра ШІ і аўтаматызацыю ў сферы культуры</li>
+    <li>Удзельнік панэльнай дыскусіі на канферэнцыі ETC у Сафіі, лістапад 2026 года</li>
+    <li>Вядучы падкаста KULTUR:KODEN пра генератыўны ШІ на практыцы, разам з Эрыкам Расалесам</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Адукацыя</h2>
+  <ul>
+    <li>Hyper Island, AI Business Consultant (вышэйшая прафесійная адукацыя), 2023–2025</li>
+    <li>Магістр, Filmic Processes, Valand / Гётэборгскі ўніверсітэт</li>
+    <li>Бакалаўр акцёрскага майстэрства, Акадэмія музыкі і драмы, Гётэборг, 2007–2010</li>
+    <li>Гендарныя даследаванні A, уводны курс, 2000</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Мастацкая дзейнасць</h2>
+  <ul>
+    <li>Заснаваў кінавытворчую кампанію Ögat Film (2011). Det moderna projektet (2016): сааўтар, прадзюсар і выканаўца галоўнай ролі; намінацыя на прэмію «Гульдбагге» (шведская кінапрэмія) за лепшую мужчынскую ролю. Push the Button! (2026): працэс распрацоўкі і ШІ-каардынатар.</li>
+    <li>Акцёр у Dramaten, Riksteatern, Playhouse і Borås Stadsteater, а таксама на тэлебачанні.</li>
+  </ul>
+</section>
+</div>
 </main>
 
-<footer><a class="back" href="/"><span class="sv">← Till startsidan</span><span class="en" lang="en">← Back to home page</span></a></footer>
+<footer><a class="back" href="/"><span class="sv">← Till startsidan</span><span class="en" lang="en">← Back to home page</span><span class="be" lang="be">← На галоўную старонку</span></a></footer>
 </div>
 <script>
 (function(){
@@ -219,15 +271,16 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line)}
   var btns=document.querySelectorAll(".lang button");
   function apply(l,save){
     d.classList.toggle("l-en",l==="en");
+    d.classList.toggle("l-be",l==="be");
     d.lang=l;
-    document.title=l==="en"?"Jonathan Silén – CV (English)":"Jonathan Silén – CV";
+    document.title={sv:"Jonathan Silén – CV",en:"Jonathan Silén – CV (English)",be:"Jonathan Silén – CV (беларуская)"}[l];
     for(var i=0;i<btns.length;i++){btns[i].setAttribute("aria-pressed",btns[i].getAttribute("data-set")===l?"true":"false");}
     if(save){
       try{localStorage.setItem("cv-lang",l);}catch(e){}
-      try{var u=new URL(location.href);if(l==="en"){u.searchParams.set("lang","en");}else{u.searchParams.delete("lang");}history.replaceState(null,"",u.pathname+u.search+u.hash);}catch(e){}
+      try{var u=new URL(location.href);if(l!=="sv"){u.searchParams.set("lang",l);}else{u.searchParams.delete("lang");}history.replaceState(null,"",u.pathname+u.search+u.hash);}catch(e){}
     }
   }
-  apply(d.classList.contains("l-en")?"en":"sv",false);
+  apply(d.classList.contains("l-en")?"en":d.classList.contains("l-be")?"be":"sv",false);
   for(var i=0;i<btns.length;i++){btns[i].addEventListener("click",function(){apply(this.getAttribute("data-set"),true);});}
 })();
 </script>
